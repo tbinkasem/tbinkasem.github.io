@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Handling</title>
+    <link rel="stylesheet" href="ex05.css">
+</head>
+<body>
+
+    <div class="nav-bar"></div>
+
+    <div id="app">
+     
+        <div class="product">
+
+            <div class="product-image">
+                <img :src="photo">
+            </div>
+
+            <div class="product-info">
+                <h1>สินค้า : {{ product }}</h1>
+                <hr color="green">
+                <h2>สถานะสินค้า</h2>
+                <h3 v-if="inStock" style="color: blue;">
+                    สินค้ายังมี
+                </h3>
+                <h3 v-else style="color: red;">
+                    สินค้าหมดแล้ว
+                </h3>
+                <b>========================================</b>
+                <h2>รายละเอียดสินค้า</h2>
+                <ul>
+                    <li v-for="detail in details">
+                        <h3>{{ detail }}</h3>
+                    </li>
+                </ul>
+                <hr color="green">
+                <h2>คลิกเลือกสี</h2>
+
+                <div v-for="spec in specs" :key="spec.productId">
+                    <ul>
+                        <h3>
+                            <li style="background-color: #f6fa0e;" @mouseover="updateColor(spec.productImage)">
+                                {{ spec.productColor }}
+                            </li>
+                        </h3>
+                    </ul>
+                </div>
+
+                <b>========================================</b>
+                <button v-on:click="addToCart" class="add">
+                    ใส่สินค้าลงตะกร้า
+                </button>
+                <button v-on:click="removeFromCart" class="remove">
+                    นำสินค้าออกจากตะกร้า
+                </button>
+
+                <div class="cart">
+                    <h3>
+                        จำนวนสินค้าในตะกร้า : {{ cart }} ชิ้น
+                    </h3>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    
+    <script src="vue.js"></script>
+    <script src="ex05.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Conditinal Rendering</title>
+    <link rel="stylesheet" href="ex03.css">
+</head>
+<body>
+        <div class="nav"></div>
+        <div id="app">
+            <div class="row">
+                <div class="photo">
+                    <img v-bind:src="photo">
+                </div>
+                <div class="info">
+                    <h1>{{ mobile }}</h1>
+                    <h3 v-if="Qty <= 100 && Qty > 10">ยังมีสินค้าอยู่</h3>
+                    <h3 v-else-if="Qty < 10 && Qty > 0">สินค้ากำลังจะหมด</h3>
+                    <h3 v-else>สินค้าหมดแล้ว</h3>
+
+                    <h3 v-show="stock">in Stock</h3>
+                </div>
+            </div>
+        </div>
+
+    <script src="vue.js"></script>
+    <script src="ex03.js"></script>
+</body>
+</html>

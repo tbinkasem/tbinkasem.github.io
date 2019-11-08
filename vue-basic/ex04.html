@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Rendering</title>
+    <link rel="stylesheet" href="ex04.css">
+</head>
+<body>
+        <div class="nav"></div>
+        <div id="app">
+            <div class="row">
+                <div class="photo">
+                    <img v-bind:src="photo">
+                </div>
+                <div class="info">
+                    <h1>{{ mobile }}</h1>
+                    <h3 v-if="isStock" style="color: blue;">ยังมีสินค้าอยู่</h3>
+                    <h3 v-else style="color: red">สินค้าหมดแล้ว</h3>
+
+                    <ul>
+                        <li v-for="detail in details">{{ detail }}</li>
+                    </ul>
+                    <hr color="red">
+                    <ul>
+                        <li v-for="brand in brands" :key="brand.productId">
+                            รหัสสินค้า {{ brand.productId }} <br>
+                            <b>{{ brand.productName }}</b>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+    <script src="vue.js"></script>
+    <script src="ex04.js"></script>
+</body>
+</html>
